@@ -1,6 +1,18 @@
 from matplotlib import pyplot as plt
 import pandas as pd
 
+
+def plot_training_loss(loss : pd.Series):
+  """Plot the loss/epoch function"""
+
+  plt.figure()
+  plt.xlabel("Epoch")
+  plt.ylabel(str(loss.name))
+
+  plt.plot(loss.index, loss.values, label="Loss")
+  plt.legend()
+  plt.show() 
+
 def plot_model_accuracy(
     df : pd.DataFrame,
     label_key : str,
