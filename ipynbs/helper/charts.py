@@ -1,8 +1,8 @@
 from matplotlib import pyplot as plt
 import pandas as pd
+import seaborn as sns
 
-
-def plot_training_loss(loss : pd.Series):
+def plot_training_loss(loss: pd.Series):
   """Plot the loss/epoch function"""
 
   plt.figure()
@@ -11,14 +11,19 @@ def plot_training_loss(loss : pd.Series):
 
   plt.plot(loss.index, loss.values, label="Loss")
   plt.legend()
-  plt.show() 
+  plt.show()
+
+def plot_heatmap_from_df(df: pd.DataFrame, x=6, y=6):
+    plt.figure(figsize=(x, y))
+    sns.heatmap(df.corr(), annot=True, fmt=".2f", cmap="mako")
+    plt.show()
 
 def plot_model_accuracy(
-    df : pd.DataFrame,
-    label_key : str,
-    label : str = "Label",
-    prediction_key : str = "prediction",
-    prediction : str = "Prediction"):
+        df: pd.DataFrame,
+        label_key: str,
+        label: str = "Label",
+        prediction_key: str = "prediction",
+        prediction: str = "Prediction"):
     """Plots the predicted values against the actual values using scatter plot for the predicted values.
 
     Args:
@@ -30,8 +35,8 @@ def plot_model_accuracy(
     """
 
     plt.plot(df[label_key], df[label_key], label=label)
-    plt.scatter(df[label_key],df[prediction_key] , c='r', label=prediction)
-    
+    plt.scatter(df[label_key], df[prediction_key], c='r', label=prediction)
+
     plt.legend()
 
     plt.show()
