@@ -60,7 +60,8 @@ def plot_training_test_validat_accuracy(
         label_key: str,
         label: str = "Label",
         prediction_key: str = "prediction",
-        prediction: str = "Prediction"):
+        prediction: str = "Prediction",
+        titles = ["Training data", "Validation data", "Test data"]):
     """Plots the accuracy of the three different data sets.
 
     Args:
@@ -70,7 +71,6 @@ def plot_training_test_validat_accuracy(
         prediction_key (str, optional): the prediction column's key in the dataframe. Defaults to "prediction".
         prediction (str, optional): the prediction's user friendly name. Defaults to "Prediction".
     """
-    titles = ["Training data", "Validation data", "Test data"]
     fig, ax = plt.subplots(1, 3, figsize=(15, 5))
 
     for i, df in enumerate(dfs):
