@@ -13,8 +13,11 @@ def plot_training_loss(loss: pd.Series):
   plt.legend()
   plt.show()
 
-def plot_training_losses(losses, df):
+def plot_training_losses(losses : list[str], df : pd.DataFrame, ignore_first : bool = True):
     """Plot the different loss functions per epoch"""
+    if(ignore_first):
+        #removing first row
+        df = df.tail(-1)
 
     plt.figure()
 
